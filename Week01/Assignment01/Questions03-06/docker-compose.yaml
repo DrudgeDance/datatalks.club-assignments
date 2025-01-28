@@ -1,0 +1,29 @@
+networks:
+  pg-network:
+    name: pg-network
+
+services:
+  pgdatabase:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=ny_taxi
+    ports:
+      - "5432:5432"
+    networks:
+      - pg-network
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "user", "-d", "ny_taxi"]
+      interval: 5s
+      retries: 5
+
+  data_loader:
+    build: .
+    volumes:
+      - .:/app
+    networks:
+      - pg-network
+    depends_on:
+      pgdatabase:
+        condition: service_healthy 

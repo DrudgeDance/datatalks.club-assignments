@@ -201,3 +201,59 @@ triggers:
 References:
 - [Kestra Schedule Trigger Documentation](https://kestra.io/plugins/core/triggers/io.kestra.plugin.core.trigger.schedule) - Official documentation for Kestra's Schedule trigger configuration
 - [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) - Official list of timezone names like `America/New_York`
+
+<details>
+<summary><h1>Cleanup</h1></summary>
+
+Below are the steps taken to clean up all Google Cloud resources used in this assignment:
+
+## BigQuery Cleanup
+```bash
+# List existing datasets
+bq ls
+   datasetId   
+ ------------- 
+  de_zoomcamp  
+  zoomcamp     
+
+# Remove datasets and their contents
+bq rm -r -f de_zoomcamp
+bq rm -r -f zoomcamp
+```
+
+## Cloud Storage Cleanup
+```bash
+# List buckets
+gsutil ls
+gs://zoomcamp-data-store/
+
+# Remove bucket and all contents (62 files)
+gsutil -m rm -r gs://zoomcamp-data-store
+Removing gs://zoomcamp-data-store/green_tripdata_2019-01.csv...
+Removing gs://zoomcamp-data-store/yellow_tripdata_2020-12.csv...
+Removing gs://zoomcamp-data-store/green_tripdata_2020-04.csv...
+// ... more files removed ...
+Operation completed over 62 objects.
+```
+
+## Verification
+```bash
+# Verify all resources are removed
+bq ls && echo "BigQuery datasets:" && gsutil ls && echo "Cloud Storage buckets:"
+BigQuery datasets:
+Cloud Storage buckets:
+```
+
+### Resources Cleaned Up
+1. BigQuery Datasets:
+   - `de_zoomcamp` (containing taxi trip data tables)
+   - `zoomcamp`
+
+2. Cloud Storage:
+   - Bucket: `gs://zoomcamp-data-store`
+   - Contents: 62 files including:
+     - Yellow taxi data files (2019-2021)
+     - Green taxi data files (2019-2021)
+
+All GCP resources used in this assignment have been successfully removed.
+</details>

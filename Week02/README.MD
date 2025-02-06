@@ -1,3 +1,4 @@
+# Quiz Questions
 <details>
 <summary><h1>Quiz Questions</h1></summary>
 
@@ -40,8 +41,7 @@ Complete the Quiz shown below. It's a set of 6 multiple-choice questions to test
 - Add a `location` property set to `New_York` in the `Schedule` trigger configuration  
 </details>
 
-<details>
-<summary><h1>Setup and Prerequisites</h1></summary>
+# Setup and Prerequisites
 
 ## Installing Google Cloud SDK on macOS
 1. Using Homebrew (recommended):
@@ -100,7 +100,6 @@ tasks:
     kvType: STRING
     value: zoomcamp-data-store  # Your Cloud Storage bucket name
 ```
-</details>
 
 # Answers and Commands
 
@@ -202,8 +201,7 @@ References:
 - [Kestra Schedule Trigger Documentation](https://kestra.io/plugins/core/triggers/io.kestra.plugin.core.trigger.schedule) - Official documentation for Kestra's Schedule trigger configuration
 - [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) - Official list of timezone names like `America/New_York`
 
-<details>
-<summary><h1>Cleanup</h1></summary>
+# Cleanup
 
 Below are the steps taken to clean up all Google Cloud resources used in this assignment:
 
@@ -256,4 +254,3 @@ Cloud Storage buckets:
      - Green taxi data files (2019-2021)
 
 All GCP resources used in this assignment have been successfully removed.
-</details>
